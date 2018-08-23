@@ -5,7 +5,7 @@
 	
 	<div class="row">
 		<div class="col-xs-12 col-sm-12">
-			<form role="form" ng-form="signup-form" >
+			<form role="form">
 				<div class="form-group custom-form-group ">
 					
 					<input placeholder="Name" type="text" class="form-control custom-input" id="name" name="name" ng-model="name" required>
@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group custom-form-group ">
 					
-					<input placeholder="Zipcode" type="text" class="form-control custom-input" id="zip" name="zip" ng-model="zip" required>
+					<input placeholder="Zipcode" type="tel" class="form-control custom-input" id="zip" name="zip" ng-model="zip" required>
 				</div>
 				<p class="text-muted">This fitness challenge program is available only for residents on PA.</p>
 				<div class="form-group widget">
@@ -67,32 +67,3 @@
 		
 	</div>
 </div>
-<!-- <script>
-$( function() {
-$( "input[type=radio]" ).checkboxradio({
-	icon: false
-});
-$( ".custom-checkbox").click(function(event) {
-	event.preventDefault();
-	if($(this).hasClass("custom-checkmark")){
-		$(this).removeClass("custom-checkmark");
-	}else {
-		$(this).addClass("custom-checkmark");
-	}
-	
-});
-$( "form" ).submit(function( event ) {
-	event.preventDefault();
-	var form = this;
-		if ( $( ".custom-checkbox" ).hasClass("custom-checkmark")) {
-			$(".checkbox-error").hide();
-			$(form).valid();
-		}else {
-			console.log("check");
-			$(".checkbox-error").show();
-			return;
-		}
-
-	});
-});
-</script> -->

@@ -1,0 +1,94 @@
+@media screen and (min-width: 481px){
+	.background_cover_top{
+	 	background: url("content/images/Lion-Desktop.png") no-repeat;
+	}
+	.background_cover_bottom{
+		background: url("content/images/Texture-email fields.png") no-repeat;
+	}
+	.fittany-logo-desktop{
+		//background: url("content/images/Fittany_Lions_Logo Desktop.png") no-repeat;
+		//width: 185px;
+    	//height: 81px;
+    	margin: 20px 0 0 30px;
+    	display:block;
+    	background-color: #ededed;
+
+	}
+	.fittany-logo-mobile{
+		display:none;
+	}
+}
+@media screen and (max-width: 480px) {
+	.background_cover_top{
+	 	background: url("content/images/Lion-Mobile.png") no-repeat;
+	}
+	.background_cover_bottom{
+		background: url("content/images/Texture-email fields-Mobile.png") no-repeat;
+	}
+	.content_div{
+    	position: relative;
+    	margin-top: 200px;
+    	color: #fff;
+	}
+	.fittany_h1{
+		font-weight: bolder;
+    	font-size: 27px;
+    	padding: 0 16px;
+    	text-align: center;
+    	padding-top: 0px;
+	}
+	.fittany_subheading{
+		font-weight: 300;
+    	font-size: 22px;
+    	padding-top: 0;
+    	color: #fff;
+    	margin-left: inherit;
+	}
+	.fittany_p{
+		padding: 0 10px;
+    	text-align: center;
+    	font-weight: lighter;
+    	line-height: 25px;
+    	font-size: 13px;
+    	color:#fff;
+	}
+	.image-container{
+		    margin-top: 50px;
+    		margin-left: calc(100%/5);
+    		margin-right: calc(100%/5);
+	}
+	.image-container img {
+		padding-left: calc(100%/5);
+	}
+	.wellness-logo{
+	    background-blend-mode: luminosity;
+	    opacity:0.3;
+	}
+	.fittany-logo-mobile{
+		// background: url("content/images/Fittany_Lions_Logo Desktop.png") no-repeat;
+		// width: 180px;
+  //   	height: 80px;
+    	margin: 20px 0 0 30px;
+    	display:block;
+    	background-color: #ededed;
+
+	}
+	.fittany-logo-desktop{
+		display:none;
+	}
+
+}
+
+.background_cover_top{
+	background-color: #081d3a !important;
+}
+
+.hero_container{
+	margin-left:0 !important;
+	margin-right:0 !important;
+	padding-left:0 !important;
+	padding-right:0 !important;
+	position:relative;
+	top:0;
+
+}

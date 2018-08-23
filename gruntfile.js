@@ -15,7 +15,8 @@ module.exports = function(grunt) {
                 css: '<%=pkg.css_src_path%>**/*.css',
                 sass:'<%=pkg.sass_src_path%>main.scss',
                 html:'<%= pkg.js_src_path%>**/*.html',
-                node_modules: '<%= pkg.node_modules%>'
+                node_modules: '<%= pkg.node_modules%>',
+                images: '<%= pkg.image_path%>**/*.*'
             },
             dest: {
                 jsconcat: '<%= pkg.js_bundle_path %>highmark-desktop-base.js',
@@ -99,6 +100,7 @@ module.exports = function(grunt) {
             main: {
                 files: [
                     {expand: true, src: ['<%=files.src.js%>'], dest: 'temp/'},
+                    {expand: true, src: ['<%=files.src.images%>'], dest: 'temp/'},
  
                 ]
             }
@@ -153,29 +155,29 @@ module.exports = function(grunt) {
             target: ['<%=files.src.sass%>']
         },
 
-        connect: {
-            server: {
-                options: {
-                    port: 3000,
-                    hostname: 'localhost',
-                    livereload: true
-                }
-            }
-        },
-        // browserSync: {
-        //     dev: {
-        //         bsFiles: {
-        //             src : [
-        //                 './app', './content', './scss', 'index.html'
-        //             ]
-        //         },
+        // connect: {
+        //     server: {
         //         options: {
-        //             watchTask: true,
-        //             server: './',
-        //             port:3000
+        //             port: 3000,
+        //             hostname: 'localhost',
+        //             livereload: true
         //         }
         //     }
         // },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : [
+                        './app', './content', './scss', 'index.html'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './',
+                    port:3000
+                }
+            }
+        },
 
         processhtml: (function() {
             if (grunt.config('env') === 'dev') {
@@ -232,7 +234,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // grunt.loadNpmTasks('grunt-contrib-jasmine');
-    // grunt.loadNpmTasks('grunt-browser-sync');
+    grunt.loadNpmTasks('grunt-browser-sync');
 
 
     // run tests
@@ -246,6 +248,6 @@ module.exports = function(grunt) {
 
     // Run server and watch for changes
     grunt.registerTask('default', ['build']);
-    grunt.registerTask('run', ['build', 'connect', 'watch']);
+    grunt.registerTask('run', ['build', 'browserSync', 'watch']);
 
 };
