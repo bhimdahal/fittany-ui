@@ -12,6 +12,7 @@ module.exports = function(grunt) {
         files: {
             src: {
                 js: ['<%= pkg.js_src_path %>**/*.js'],
+                json: ['<%= pkg.json_src_path %>**/*.json'],
                 css: '<%=pkg.css_src_path%>**/*.css',
                 sass:'<%=pkg.sass_src_path%>main.scss',
                 html:'<%= pkg.js_src_path%>**/*.html',
@@ -56,10 +57,10 @@ module.exports = function(grunt) {
                     reload: true
                 }
             },
-            liveReload:{
-                files: ['./app/**/*.*','./content/**/*.*','.scss/**/*.*', './*.html'],
+            livereload:{
+                files: ['temp/app/**/*js','temp/content/**/*.css', 'temp/scss/**/*.scss', 'temp/app/**/*.html' ,'index.html','temp/content/images/**'],
                 options:{
-                   livereload:true 
+                   livereload:true
                 }
                 
             },
@@ -78,7 +79,7 @@ module.exports = function(grunt) {
             html: {
                 files: ['<%= pkg.js_src_path%>**/*.html'],
                 tasks: ['clean_html', 'html_imports']
-            }
+            },
         },
 
         // concat: {
@@ -101,9 +102,10 @@ module.exports = function(grunt) {
                 files: [
                     {expand: true, src: ['<%=files.src.js%>'], dest: 'temp/'},
                     {expand: true, src: ['<%=files.src.images%>'], dest: 'temp/'},
+                    {expand: true, src: ['<%=files.src.json%>'], dest: 'temp/'},
  
-                ]
-            }
+                ],
+            },
         },
 
         // uglify: {
@@ -123,18 +125,18 @@ module.exports = function(grunt) {
         // },
 
         sass: {
-            // options: (function() {
-            //     if (grunt.config('env') != 'dev') {
-            //         return {
-            //             sourcemap: 'none'
-            //         };
-            //     }
-            // }()),
+            options: (function() {
+                if (grunt.config('env') != 'dev') {
+                    return {
+                        sourcemap: 'none'
+                    };
+                }
+            }()),
             dist: {
                 files: {
                     'temp/highmark-scss.css':'scss/main.scss'
-                }
-            }
+                },
+            },
         },
 
         cssmin: {
@@ -144,8 +146,8 @@ module.exports = function(grunt) {
                     ['<%= files.dest.cssmin%>']:['<%= files.src.css%>','<%=pkg.js_bundle_path%>highmark-scss.css']
 
 
-                }
-            }
+                },
+            },
         },
 
         sasslint: {
@@ -165,18 +167,18 @@ module.exports = function(grunt) {
         //     }
         // },
         browserSync: {
-            dev: {
+           // dev: {
                 bsFiles: {
                     src : [
-                        './app', './content', './scss', 'index.html'
+                        'app/**/*.js', 'app/**/*.html', 'content/**/*.css', 'scss/**/*.scss', 'index.html','content/images/**'
                     ]
                 },
                 options: {
-                    watchTask: true,
+                    watch: true,
                     server: './',
                     port:3000
                 }
-            }
+            //}
         },
 
         processhtml: (function() {
